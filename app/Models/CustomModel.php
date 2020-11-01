@@ -61,7 +61,7 @@ class CustomModel{
     }
 
     function wherein(){
-        //SELECT * FROM posts where (post_id = 25 AND post_data < '1990-01-01 00:00:00') OR post_author = 10;
+       
         $emails = ['rgutmann@example.com','rgutmann@example.com','rgutmann@example.com'];
         return $this->db->table('posts')
                         ->groupStart()
