@@ -14,13 +14,13 @@
 
 <body>
     <div class="container">
-    <h1>Form Validation</h1>
-    <?php if(isset($validation)) : ?>
-        <div class="text-danger">
-            <?= $validation->listErrors() ?>
-        </div>
+        <h1>Form Validation</h1>
+        <?php if (isset($validation)) : ?>
+            <div class="text-danger">
+                <?= $validation->listErrors() ?>
+            </div>
         <?php endif ?>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input name="email" value="<?= set_value('email') ?>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -33,9 +33,9 @@
             <div class="form-group">
                 <label for="exampleInputPassword1">Category</label>
                 <select name="category" class="form-control">
-                    <option value="" ></option>
-                    <?php foreach($categories as $cat) : ?>
-                    <option <?= set_select('category', $cat) ?> value="<?= $cat ?>" ><?= $cat ?></option>
+                    <option value=""></option>
+                    <?php foreach ($categories as $cat) : ?>
+                        <option <?= set_select('category', $cat) ?> value="<?= $cat ?>"><?= $cat ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -43,15 +43,19 @@
                 <label for="exampleInputPassword1">Date</label>
                 <input name="date" value="<?= set_value('date') ?>" type="date" class="form-control" id="date">
             </div>
-           <?php 
-                echo '<pre>';
-                 print_r($_POST);
-                echo '<pre>';
-           ?>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Upload File </label>
+                <input type="file" multiple name="theFile[]" class="form-control-file" id="file">
+            </div>
+            <?php
+            echo '<pre>';
+            print_r($_POST);
+            echo '<pre>';
+            ?>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-   
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
